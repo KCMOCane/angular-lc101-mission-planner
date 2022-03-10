@@ -30,7 +30,8 @@ export class EquipmentComponent implements OnInit {
    addItem(item) {
      this.cargoHold.push(item);
      this.cargoMass += item['mass'];
+
+     }
      
-   }
    
 }
