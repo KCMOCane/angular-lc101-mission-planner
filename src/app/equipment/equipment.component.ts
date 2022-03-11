@@ -1,4 +1,6 @@
+import { isNgTemplate } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-equipment',
@@ -21,6 +23,7 @@ export class EquipmentComponent implements OnInit {
    cargoMass: number = 0;
    maximumAllowedMass: number = 2000;
    maxItems: number = 10;
+   itemAdd: boolean = true
 
    constructor() { }
 
@@ -30,8 +33,20 @@ export class EquipmentComponent implements OnInit {
    addItem(item) {
      this.cargoHold.push(item);
      this.cargoMass += item['mass'];
+     if (this.cargoMass + 200 <= this.maximumAllowedMass) {
+       this.itemAdd = true;
+     } else {
+       this.itemAdd = false;
+     }
+    }
+
+     emptyCargo() {
+       this.cargoHold = [];
+       this.cargoMass = 0;
+       this.itemAdd = true;
+     }
 
      }
      
    
-}
+
